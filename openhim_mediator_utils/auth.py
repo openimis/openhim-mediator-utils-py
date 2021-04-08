@@ -10,7 +10,6 @@ class Auth:
         self.salt = ''
 
     def authenticate(self):
-        print("logging entry")
         if not self.options['verify_cert']:
             urllib3.disable_warnings(
                 urllib3.exceptions.InsecureRequestWarning
@@ -23,8 +22,6 @@ class Auth:
             ),
             verify=self.options['verify_cert']
         )
-        print("logging")
-        print(result.json())
         if result.status_code != 200:
             raise Exception(
                 "User {} not found when authenticating with core API".format(self.options['username'])
