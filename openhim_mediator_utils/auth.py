@@ -44,7 +44,7 @@ class Auth:
         password_hash = sha.hexdigest()
 
         sha = hashlib.sha512()
-        now = str(datetime.datetime.now())
+        now = str(datetime.datetime.utcnow())
         sha.update((password_hash + self.salt + now).encode('utf-8'))
         token = sha.hexdigest()
 
